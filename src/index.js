@@ -1,8 +1,3 @@
-//Виконай санітизацію введеного рядка методом trim(), це вирішить проблему,
-//коли в полі введення тільки пробіли, або вони є на початку і в кінці рядка.
-
-//Якщо бекенд повернув від 2-х до 10-и країн, під тестовим полем відображається список знайдених країн.
-//Кожен елемент списку складається з прапора та назви країни.
 
 import debounce from 'lodash.debounce';
 import Notiflix from 'notiflix';
@@ -22,8 +17,7 @@ function onCountryNameInput(e) {
     const country = countryNameInput.value.trim();
     
     console.log(country)
-    if (country.length === 0 || country === undefined) {
-        console.log('No DATA');
+    if (country.length === 0) {
         countryListEl.innerHTML = '';
         return
     }
@@ -49,22 +43,23 @@ function onCountryNameInput(e) {
     
     function createSmallCountryCard({ flags, name }) {
         return `<li>
-        <img src = "${flags.svg}" width = 30 hiegth = 30>   ${name.official}</img>
+        <img src = "${flags.svg}" width = 30 height = 20 >   ${name.official}</img>
         </li>`
 
     };
     
     function createCountryCard({flags, name, capital, population, languages}) {
         return `<li>
-        <img src = "${flags.svg}" width = 30 hiegth = 30></img>
+        <img src = "${flags.svg}" width = 50 hiegth = 40></img>
         <p>${name.official}</p>
         <p>Capital: ${capital}</p>
         <p>Population: ${population}</p>
         <p>Languages: ${Object.values(languages)}</p>
-        </l/i>`
+        </li>`
     };
 
-        function onErrore(err) { 
+    function onErrore(err) {
+        countryListEl.innerHTML = '';
             Notiflix.Notify.failure('Oops, there is no country with that name');
         }
 } ;
