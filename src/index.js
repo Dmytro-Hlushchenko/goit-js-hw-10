@@ -13,7 +13,6 @@ const result = fetchCountries();
 countryNameInput.addEventListener('input', debounce(onCountryNameInput, DEBOUNCE_DELAY));
 
 function onCountryNameInput(e) {
-     e.preventDefault();
     const country = countryNameInput.value.trim();
     
     console.log(country)
